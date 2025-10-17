@@ -7,6 +7,7 @@ const app = express()
 // Rest of the Packages
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
+const fileUpload = require('express-fileupload')
 
 // Database Connection
 const connectDB = require('./db/connect')
@@ -25,6 +26,8 @@ const errorHandlerMiddleware = require('./middleware/error-handler')
 app.use(morgan('tiny'))
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
+app.use(express.static('./public'))
+app.use(fileUpload())
 
 app.get('/', (req, res) => {
   res.send('<h1>Hello World')

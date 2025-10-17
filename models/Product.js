@@ -9,26 +9,13 @@ const ProductSchema = new mongoose.Schema(
       required: [true, 'Please provide product name'],
       maxLength: [100, 'Name cannot be more than 100 characters'],
     },
-    price: {
-      type: Number,
-      required: [true, 'Please provide product price'],
-      default: 0,
-    },
-    description: {
-      type: String,
-      required: [true, 'Please provide product description'],
-      maxLength: [1000, 'Name cannot be more than 1000 characters'],
-      default: 0,
-    },
-    image: {
-      type: String,
-      default: '/uploads/example.jpeg',
-    },
+
     category: {
       type: String,
       required: [true, 'Please provide product category'],
       enum: ['office', 'kitchen', 'bedroom'],
     },
+
     company: {
       type: String,
       required: [true, 'Please provide company'],
@@ -37,8 +24,27 @@ const ProductSchema = new mongoose.Schema(
         message: '{VALUE} is not supported',
       },
     },
+
+    description: {
+      type: String,
+      required: [true, 'Please provide product description'],
+      maxLength: [1000, 'Name cannot be more than 1000 characters'],
+    },
+
+    price: {
+      type: Number,
+      required: [true, 'Please provide product price'],
+      default: 0,
+    },
+
+    image: {
+      type: String,
+      default: '/uploads/example.jpeg',
+    },
+
     colors: {
       type: [String],
+      default: ['#222'],
       required: true,
     },
     featured: {
